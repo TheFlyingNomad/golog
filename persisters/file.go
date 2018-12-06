@@ -3,28 +3,25 @@ package persisters
 import (
 	"os"
 
-	"github.com/nic0lae/golog/contracts"
+	gologC "github.com/TheFlyingNomad/golog/contracts"
 )
 
-type FileLogger struct {
+type fileLogger struct {
 	file *os.File
 }
 
-func NewFileLogger(fileName string) contracts.Logger {
+// NewFileLogger -
+func NewFileLogger(fileName string) (gologC.Logger, error) {
 	f, err := os.Create(fileName)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
-	return &FileLogger{
+	return &fileLogger{
 		file: f,
-	}
+	}, nil
 }
 
-func (thisRef *FileLogger) Log(logEntry contracts.LogEntry) {
+func (thisRef fileLogger) Log(logEntry gologC.LogEntry) {
 	thisRef.file.WriteString(logEntry.Message + "\n")
 }
-
-func (thisRef *FileLogger) LogInfo(id string, level int, message string)    {}
-func (thisRef *FileLogger) LogWarning(id string, level int, message string) {}
-func (thisRef *FileLogger) LogError(id string, level int, message string)   {}

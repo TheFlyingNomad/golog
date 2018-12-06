@@ -1,20 +1,29 @@
-package maing
+package main
 
 import (
-	"github.com/nic0lae/golog/contracts"
-	"github.com/nic0lae/golog/modifiers"
+	housekeeping "github.com/TheFlyingNomad/golog/local-house-keeping"
+
+	gologC "github.com/TheFlyingNomad/golog/contracts"
+	gologP "github.com/TheFlyingNomad/golog/persisters"
 )
 
-func NewLogger(logger contracts.Logger) contracts.Logger {
-	return modifiers.NewDefaultLogger(logger)
-}
+var instance gologC.EasyLogger
 
-var instance contracts.Logger
-
-func StoreSingleton(logger contracts.Logger) {
+// Init -
+func Init(logger gologC.EasyLogger) {
 	instance = logger
 }
 
-func Instance() contracts.Logger {
+// NewConsoleLogger -
+func NewConsoleLogger() gologC.EasyLogger {
+	return housekeeping.NewDefaultHelperImplmentation(
+		gologP.NewConsoleLogger(),
+	)
+}
+
+// Instance -
+func Instance() gologC.EasyLogger {
 	return instance
 }
+
+func main() {}

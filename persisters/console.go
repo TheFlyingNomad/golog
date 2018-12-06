@@ -3,20 +3,23 @@ package persisters
 import (
 	"fmt"
 
-	"github.com/nic0lae/golog/contracts"
+	gologC "github.com/TheFlyingNomad/golog/contracts"
+	coloredLogs "github.com/logrusorgru/aurora"
 )
 
-type ConsoleLogger struct {
+type consoleLogger struct{}
+
+// NewConsoleLogger -
+func NewConsoleLogger() gologC.Logger {
+	return &consoleLogger{}
 }
 
-func NewConsoleLogger() contracts.Logger {
-	return &ConsoleLogger{}
+func (thisRef consoleLogger) Log(logEntry gologC.LogEntry) {
+	if logEntry.LogType == gologC.TypeWarning {
+		fmt.Println(coloredLogs.Magenta(logEntry.Message))
+	} else if logEntry.LogType == gologC.TypeError {
+		fmt.Println(coloredLogs.Red(logEntry.Message))
+	} else {
+		fmt.Println(logEntry.Message)
+	}
 }
-
-func (thisRef *ConsoleLogger) Log(logEntry contracts.LogEntry) {
-	fmt.Println(logEntry.Message)
-}
-
-func (thisRef *ConsoleLogger) LogInfo(id string, level int, message string)    {}
-func (thisRef *ConsoleLogger) LogWarning(id string, level int, message string) {}
-func (thisRef *ConsoleLogger) LogError(id string, level int, message string)   {}

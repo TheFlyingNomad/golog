@@ -1,1 +1,130 @@
-# golog
+# Log Quick
+```go
+import (
+	...
+	golog "github.com/TheFlyingNomad/golog"
+	...
+)
+
+func main() {
+	...
+	golog.Init(golog.NewConsoleLogger())
+	...
+	golog.Instance().LogInfo("Info line")
+	golog.Instance().LogWarning("Warning line")
+	golog.Instance().LogError("Error line")
+	...
+}
+```
+
+# Log Smart
+```go
+import (
+	...
+	golog  "github.com/TheFlyingNomad/golog"	
+	gologC "github.com/TheFlyingNomad/golog/contracts"
+	gologF "github.com/TheFlyingNomad/golog/formatters"
+	gologM "github.com/TheFlyingNomad/golog/mixers"
+	gologP "github.com/TheFlyingNomad/golog/persisters"
+	...
+)
+
+func main() {
+	...
+	golog.Init(
+		gologF.NewSimpleFormatterLogger(
+			gologM.NewMultiLogger(
+				[]gologC.Logger{
+					gologP.NewConsoleLogger(),
+					gologP.NewFileLogger("log.log"),
+				},
+			),
+		)
+	)
+	...
+	golog.Instance().LogInfo("Info line")
+	golog.Instance().LogWarning("Warning line")
+	golog.Instance().LogError("Error line")
+	...
+}
+```
+
+# Log Async and/or Buffered
+```go
+import (
+	...
+	golog  "github.com/TheFlyingNomad/golog"	
+	gologC "github.com/TheFlyingNomad/golog/contracts"
+	gologF "github.com/TheFlyingNomad/golog/formatters"
+	gologM "github.com/TheFlyingNomad/golog/mixers"
+	gologP "github.com/TheFlyingNomad/golog/persisters"
+	...
+)
+
+func main() {
+	...
+	golog.Init(
+		gologF.NewSimpleFormatterLogger(
+			gologM.NewAsyncLogger(
+				gologM.NewBufferedLogger(
+					gologM.NewMultiLogger(
+						[]gologC.Logger{
+							gologP.NewConsoleLogger(),
+							gologP.NewFileLogger("log.log"),
+						},
+					),
+					gologM.BufferedLoggerConfig{
+						MaxLogEntries: 100
+					}
+				),
+			),
+		)
+	)
+	...
+	golog.Instance().LogInfo("Info line")
+	golog.Instance().LogWarning("Warning line")
+	golog.Instance().LogError("Error line")
+	...
+}
+```
+
+
+# Special Cases Logger - 
+#### `NewInMemoryGroupedAndSortedLogger()` 
+```go
+import (
+	...
+	golog  "github.com/TheFlyingNomad/golog"
+	gologC "github.com/TheFlyingNomad/golog/contracts"
+	gologP "github.com/TheFlyingNomad/golog/persisters"
+	...
+)
+
+func main() {
+	...
+
+// Ex: parentMethod - level 0, childMethod() - level 1
+// Useful for call-stack type of execution, ignore if of no use
+
+
+	// Configure Logging
+	var inMemoryGroupedAndSortedLogger = gologP.NewInMemoryGroupedAndSortedLogger(
+		gologM.NewSimpleFormatterLogger(
+			gologM.NewMultiLogger(
+				[]gologC.Logger{
+					gologP.NewConsoleLogger(),
+					gologP.NewFileLogger("update-nodes.log"),
+				},
+			),
+		),
+	)
+	golog.Init(inMemoryGroupedAndSortedLogger)
+
+	...
+	golog.Instance().LogInfo()
+	...
+
+	// Dump log entries from memory to the configured pipe-line
+	(inMemoryGroupedAndSortedLogger.(*gologM.InmemoryLogger)).Flush()
+}
+```

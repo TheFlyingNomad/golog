@@ -1,4 +1,4 @@
-package modifiers
+package formatters
 
 import (
 	"fmt"
@@ -6,20 +6,21 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nic0lae/golog/contracts"
+	gologC "github.com/TheFlyingNomad/golog/contracts"
 )
 
-type SimpleFormatterLogger struct {
-	loggerToSendTo contracts.Logger
+type simpleFormatterLogger struct {
+	loggerToSendTo gologC.Logger
 }
 
-func NewSimpleFormatterLogger(logger contracts.Logger) contracts.Logger {
-	return &SimpleFormatterLogger{
+// NewSimpleFormatterLogger -
+func NewSimpleFormatterLogger(logger gologC.Logger) gologC.Logger {
+	return &simpleFormatterLogger{
 		loggerToSendTo: logger,
 	}
 }
 
-func (thisRef *SimpleFormatterLogger) Log(logEntry contracts.LogEntry) {
+func (thisRef simpleFormatterLogger) Log(logEntry gologC.LogEntry) {
 	var formattedTime = logEntry.Time.UTC().Format(time.RFC3339Nano)
 	var formattedTimeLen = len(formattedTime)
 	if formattedTimeLen < 30 {
@@ -39,15 +40,11 @@ func (thisRef *SimpleFormatterLogger) Log(logEntry contracts.LogEntry) {
 	logEntry.Message = fmt.Sprintf(
 		"%s %s %s %"+strconv.Itoa(logEntry.Level*4)+"v %s",
 		formattedTime,
-		logEntry.ErrorType,
-		logEntry.Id,
+		logEntry.LogType,
+		logEntry.Tag,
 		"",
 		logEntry.Message,
 	)
 
 	thisRef.loggerToSendTo.Log(logEntry)
 }
-
-func (thisRef *SimpleFormatterLogger) LogInfo(id string, level int, message string)    {}
-func (thisRef *SimpleFormatterLogger) LogWarning(id string, level int, message string) {}
-func (thisRef *SimpleFormatterLogger) LogError(id string, level int, message string)   {}

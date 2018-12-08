@@ -1,4 +1,4 @@
-package main
+package golog
 
 import (
 	housekeeping "github.com/TheFlyingNomad/golog/local-house-keeping"
@@ -25,5 +25,3 @@ func NewConsoleLogger() gologC.EasyLogger {
 func Instance() gologC.EasyLogger {
 	return instance
 }
-
-func main() {}

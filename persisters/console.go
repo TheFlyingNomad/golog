@@ -15,11 +15,20 @@ func NewConsoleLogger() gologC.Logger {
 }
 
 func (thisRef consoleLogger) Log(logEntry gologC.LogEntry) {
-	if logEntry.LogType == gologC.TypeWarning {
-		fmt.Println(coloredLogs.Magenta(logEntry.Message))
-	} else if logEntry.LogType == gologC.TypeError {
+	// TypePanic = iota
+	// TypeFatal
+	// TypeError
+	// TypeWarning
+	// TypeInfo
+	// TypeDebug
+
+	if logEntry.LogType < gologC.TypeWarning {
 		fmt.Println(coloredLogs.Red(logEntry.Message))
-	} else {
+	} else if logEntry.LogType == gologC.TypeWarning {
+		fmt.Println(coloredLogs.Magenta(logEntry.Message))
+	} else if logEntry.LogType == gologC.TypeInfo {
 		fmt.Println(logEntry.Message)
+	} else if logEntry.LogType == gologC.TypeDebug {
+		fmt.Println(coloredLogs.Green(logEntry.Message))
 	}
 }

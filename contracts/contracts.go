@@ -15,15 +15,6 @@ const (
 // Fields -
 type Fields map[string]interface{}
 
-var logTypeToString = map[int]string{
-	TypePanic:   "F__K",
-	TypeFatal:   "OSHT",
-	TypeError:   "ERRR",
-	TypeWarning: "OOPS",
-	TypeInfo:    "INFO",
-	TypeDebug:   "DEBU",
-}
-
 // LogEntry -
 type LogEntry struct {
 	Time    time.Time // time.Now()
@@ -58,10 +49,10 @@ type EasyLogger interface {
 	LogInfo(message string)
 	LogDebug(message string)
 
-	LogPanicWithFields(message string, fields Fields)
-	LogFatalWithFields(message string, fields Fields)
-	LogErrorWithFields(message string, fields Fields)
-	LogWarningWithFields(message string, fields Fields)
-	LogInfoWithFields(message string, fields Fields)
-	LogDebugWithFields(message string, fields Fields)
+	LogPanicWithFields(fields Fields)
+	LogFatalWithFields(fields Fields)
+	LogErrorWithFields(fields Fields)
+	LogWarningWithFields(fields Fields)
+	LogInfoWithFields(fields Fields)
+	LogDebugWithFields(fields Fields)
 }

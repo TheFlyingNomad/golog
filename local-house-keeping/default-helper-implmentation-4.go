@@ -7,52 +7,51 @@ import (
 	gologC "github.com/TheFlyingNomad/golog/contracts"
 )
 
-func (thisRef defaultHelperImplmentation) LogPanicWithFields(message string, fields gologC.Fields) {
+func (thisRef defaultHelperImplmentation) LogPanicWithFields(fields gologC.Fields) {
 	var data, err = json.Marshal(fields)
 	if err != nil {
 		fmt.Println(fmt.Sprintf("%v", err))
 	}
 
-	thisRef.LogPanicWithTagAndLevel("", 0, fmt.Sprintf("%s -> %s", message, string(data)))
+	thisRef.LogPanicWithTagAndLevel("", 0, string(data))
 }
-func (thisRef defaultHelperImplmentation) LogFatalWithFields(message string, fields gologC.Fields) {
+func (thisRef defaultHelperImplmentation) LogFatalWithFields(fields gologC.Fields) {
 	var data, err = json.Marshal(fields)
 	if err != nil {
 		fmt.Println(fmt.Sprintf("%v", err))
 	}
 
-	thisRef.LogFatalWithTagAndLevel("", 0, fmt.Sprintf("%s -> %s", message, string(data)))
+	thisRef.LogFatalWithTagAndLevel("", 0, string(data))
 }
-func (thisRef defaultHelperImplmentation) LogErrorWithFields(message string, fields gologC.Fields) {
+func (thisRef defaultHelperImplmentation) LogErrorWithFields(fields gologC.Fields) {
 	var data, err = json.Marshal(fields)
 	if err != nil {
 		fmt.Println(fmt.Sprintf("%v", err))
 	}
 
-	thisRef.LogErrorWithTagAndLevel("", 0, fmt.Sprintf("%s -> %s", message, string(data)))
+	thisRef.LogErrorWithTagAndLevel("", 0, string(data))
 }
-func (thisRef defaultHelperImplmentation) LogWarningWithFields(message string, fields gologC.Fields) {
+func (thisRef defaultHelperImplmentation) LogWarningWithFields(fields gologC.Fields) {
 	var data, err = json.Marshal(fields)
 	if err != nil {
 		fmt.Println(fmt.Sprintf("%v", err))
 	}
 
-	thisRef.LogWarningWithTagAndLevel("", 0, fmt.Sprintf("%s -> %s", message, string(data)))
+	thisRef.LogWarningWithTagAndLevel("", 0, string(data))
 }
-func (thisRef defaultHelperImplmentation) LogInfoWithFields(message string, fields gologC.Fields) {
+func (thisRef defaultHelperImplmentation) LogInfoWithFields(fields gologC.Fields) {
 	var data, err = json.Marshal(fields)
 	if err != nil {
 		fmt.Println(fmt.Sprintf("%v", err))
 	}
 
-	thisRef.LogInfoWithTagAndLevel("", 0, fmt.Sprintf("%s -> %s", message, string(data)))
-
+	thisRef.LogInfoWithTagAndLevel("", 0, string(data))
 }
-func (thisRef defaultHelperImplmentation) LogDebugWithFields(message string, fields gologC.Fields) {
+func (thisRef defaultHelperImplmentation) LogDebugWithFields(fields gologC.Fields) {
 	var data, err = json.Marshal(fields)
 	if err != nil {
 		fmt.Println(fmt.Sprintf("%v", err))
 	}
 
-	thisRef.LogDebugWithTagAndLevel("", 0, fmt.Sprintf("%s -> %s", message, string(data)))
+	thisRef.LogDebugWithTagAndLevel("", 0, string(data))
 }

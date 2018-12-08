@@ -43,14 +43,34 @@ func (thisRef simpleFormatterLogger) Log(logEntry gologC.LogEntry) {
 		)
 	}
 
-	logEntry.Message = fmt.Sprintf(
-		"%s %s %s %"+strconv.Itoa(logEntry.Level*4)+"v %s",
-		formattedTime,
-		logEntry.LogType,
-		logEntry.Tag,
-		"",
-		logEntry.Message,
-	)
+	var formatting = "%s | %s"
+	if len(strings.TrimSpace(logEntry.Tag)) > 0 {
+		formatting = formatting + " | %s"
+	} else {
+		formatting = formatting + " |"
+	}
+
+	if logEntry.Level > 0 {
+		formatting = formatting + fmt.Sprintf(" %"+strconv.Itoa(logEntry.Level*4)+"v", "")
+	}
+	formatting = formatting + " %s"
+
+	if len(strings.TrimSpace(logEntry.Tag)) > 0 {
+		logEntry.Message = fmt.Sprintf(
+			formatting,
+			formattedTime,
+			logTypeToString[logEntry.LogType],
+			logEntry.Tag,
+			logEntry.Message,
+		)
+	} else {
+		logEntry.Message = fmt.Sprintf(
+			formatting,
+			formattedTime,
+			logTypeToString[logEntry.LogType],
+			logEntry.Message,
+		)
+	}
 
 	thisRef.loggerToSendTo.Log(logEntry)
 }

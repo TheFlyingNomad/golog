@@ -39,7 +39,7 @@ func main() {
 					gologP.NewFileLogger("log.log"),
 				},
 			),
-		)
+		),
 	)
 	...
 	golog.Instance().LogInfo("Info line")
@@ -78,7 +78,7 @@ func main() {
 					}
 				),
 			),
-		)
+		),
 	)
 	...
 	golog.Instance().LogInfo("Info line")

@@ -6,6 +6,8 @@ import (
 	"strings"
 	"time"
 
+	housekeeping "github.com/TheFlyingNomad/golog/local-house-keeping"
+
 	gologC "github.com/TheFlyingNomad/golog/contracts"
 )
 
@@ -14,10 +16,14 @@ type simpleFormatterLogger struct {
 }
 
 // NewSimpleFormatterLogger -
-func NewSimpleFormatterLogger(logger gologC.Logger) gologC.Logger {
-	return &simpleFormatterLogger{
+func NewSimpleFormatterLogger(logger gologC.Logger) gologC.EasyLogger {
+	var formatterLogger = &simpleFormatterLogger{
 		loggerToSendTo: logger,
 	}
+
+	return housekeeping.NewDefaultHelperImplmentation(
+		formatterLogger,
+	)
 }
 
 func (thisRef simpleFormatterLogger) Log(logEntry gologC.LogEntry) {

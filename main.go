@@ -1,10 +1,10 @@
 package golog
 
 import (
-	housekeeping "github.com/codemodify/golog/local-house-keeping"
+	housekeeping "github.com/brightappsllc/golog/local-house-keeping"
 
-	gologC "github.com/codemodify/golog/contracts"
-	gologP "github.com/codemodify/golog/persisters"
+	gologC "github.com/brightappsllc/golog/contracts"
+	gologP "github.com/brightappsllc/golog/persisters"
 )
 
 var instance gologC.EasyLogger

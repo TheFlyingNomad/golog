@@ -3,7 +3,7 @@ package persisters
 import (
 	"fmt"
 
-	gologC "github.com/codemodify/golog/contracts"
+	gologC "github.com/brightappsllc/golog/contracts"
 	coloredLogs "github.com/logrusorgru/aurora"
 )
 

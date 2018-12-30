@@ -3,7 +3,7 @@ package mixers
 import (
 	"sync"
 
-	gologC "github.com/codemodify/golog/contracts"
+	gologC "github.com/brightappsllc/golog/contracts"
 )
 
 // BufferedLoggerConfig -

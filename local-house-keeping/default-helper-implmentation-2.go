@@ -3,7 +3,7 @@ package housekeeping
 import (
 	"time"
 
-	gologC "github.com/codemodify/golog/contracts"
+	gologC "github.com/brightappsllc/golog/contracts"
 )
 
 func (thisRef defaultHelperImplmentation) LogPanicWithTagAndLevel(tag string, level int, message string) {

@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	gologC "github.com/codemodify/golog/contracts"
+	gologC "github.com/brightappsllc/golog/contracts"
 )
 
 type inMemoryGroupedAndSortedLogger struct {

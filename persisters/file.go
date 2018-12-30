@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	gologC "github.com/codemodify/golog/contracts"
+	gologC "github.com/brightappsllc/golog/contracts"
 )
 
 type fileLogger struct {

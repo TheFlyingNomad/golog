@@ -1,7 +1,7 @@
 package formatters
 
 import (
-	gologC "github.com/codemodify/golog/contracts"
+	gologC "github.com/brightappsllc/golog/contracts"
 )
 
 // LogTypeToString -

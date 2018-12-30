@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
-	housekeeping "github.com/codemodify/golog/local-house-keeping"
+	housekeeping "github.com/brightappsllc/golog/local-house-keeping"
 
-	gologC "github.com/codemodify/golog/contracts"
+	gologC "github.com/brightappsllc/golog/contracts"
 )
 
 type simpleFormatterLogger struct {

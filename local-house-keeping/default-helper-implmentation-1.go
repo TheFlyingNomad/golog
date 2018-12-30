@@ -1,7 +1,7 @@
 package housekeeping
 
 import (
-	gologC "github.com/codemodify/golog/contracts"
+	gologC "github.com/brightappsllc/golog/contracts"
 )
 
 type defaultHelperImplmentation struct {

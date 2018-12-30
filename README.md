@@ -2,7 +2,7 @@
 ```go
 import (
 	...
-	golog "github.com/codemodify/golog"
+	golog "github.com/brightappsllc/golog"
 	...
 )
 
@@ -21,11 +21,11 @@ func main() {
 ```go
 import (
 	...
-	golog  "github.com/codemodify/golog"
-	gologC "github.com/codemodify/golog/contracts"
-	gologF "github.com/codemodify/golog/formatters"
-	gologM "github.com/codemodify/golog/mixers"
-	gologP "github.com/codemodify/golog/persisters"
+	golog  "github.com/brightappsllc/golog"
+	gologC "github.com/brightappsllc/golog/contracts"
+	gologF "github.com/brightappsllc/golog/formatters"
+	gologM "github.com/brightappsllc/golog/mixers"
+	gologP "github.com/brightappsllc/golog/persisters"
 	...
 )
 
@@ -53,11 +53,11 @@ func main() {
 ```go
 import (
 	...
-	golog  "github.com/codemodify/golog"
-	gologC "github.com/codemodify/golog/contracts"
-	gologF "github.com/codemodify/golog/formatters"
-	gologM "github.com/codemodify/golog/mixers"
-	gologP "github.com/codemodify/golog/persisters"
+	golog  "github.com/brightappsllc/golog"
+	gologC "github.com/brightappsllc/golog/contracts"
+	gologF "github.com/brightappsllc/golog/formatters"
+	gologM "github.com/brightappsllc/golog/mixers"
+	gologP "github.com/brightappsllc/golog/persisters"
 	...
 )
 
@@ -99,9 +99,9 @@ func main() {
 ```go
 import (
 	...
-	golog  "github.com/codemodify/golog"
-	gologF "github.com/codemodify/golog/formatters"
-	gologP "github.com/codemodify/golog/persisters"
+	golog  "github.com/brightappsllc/golog"
+	gologF "github.com/brightappsllc/golog/formatters"
+	gologP "github.com/brightappsllc/golog/persisters"
 	...
 )
 

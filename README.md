@@ -2,7 +2,7 @@
 ```go
 import (
 	...
-	golog "github.com/TheFlyingNomad/golog"
+	golog "github.com/codemodify/golog"
 	...
 )
 
@@ -21,11 +21,11 @@ func main() {
 ```go
 import (
 	...
-	golog  "github.com/TheFlyingNomad/golog"	
-	gologC "github.com/TheFlyingNomad/golog/contracts"
-	gologF "github.com/TheFlyingNomad/golog/formatters"
-	gologM "github.com/TheFlyingNomad/golog/mixers"
-	gologP "github.com/TheFlyingNomad/golog/persisters"
+	golog  "github.com/codemodify/golog"
+	gologC "github.com/codemodify/golog/contracts"
+	gologF "github.com/codemodify/golog/formatters"
+	gologM "github.com/codemodify/golog/mixers"
+	gologP "github.com/codemodify/golog/persisters"
 	...
 )
 
@@ -53,11 +53,11 @@ func main() {
 ```go
 import (
 	...
-	golog  "github.com/TheFlyingNomad/golog"	
-	gologC "github.com/TheFlyingNomad/golog/contracts"
-	gologF "github.com/TheFlyingNomad/golog/formatters"
-	gologM "github.com/TheFlyingNomad/golog/mixers"
-	gologP "github.com/TheFlyingNomad/golog/persisters"
+	golog  "github.com/codemodify/golog"
+	gologC "github.com/codemodify/golog/contracts"
+	gologF "github.com/codemodify/golog/formatters"
+	gologM "github.com/codemodify/golog/mixers"
+	gologP "github.com/codemodify/golog/persisters"
 	...
 )
 
@@ -89,7 +89,7 @@ func main() {
 ```
 
 
-# Special Cases Logger - 
+# Special Cases Logger -
 #### `NewInMemoryGroupedAndSortedLogger()`
 - This logger stores the log entries in-memory.
 - Groups the log entries by the LOG-TAG
@@ -99,9 +99,9 @@ func main() {
 ```go
 import (
 	...
-	golog  "github.com/TheFlyingNomad/golog"	
-	gologF "github.com/TheFlyingNomad/golog/formatters"
-	gologP "github.com/TheFlyingNomad/golog/persisters"
+	golog  "github.com/codemodify/golog"
+	gologF "github.com/codemodify/golog/formatters"
+	gologP "github.com/codemodify/golog/persisters"
 	...
 )
 

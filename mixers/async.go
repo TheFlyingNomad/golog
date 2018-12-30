@@ -1,7 +1,7 @@
 package mixers
 
 import (
-	gologC "github.com/TheFlyingNomad/golog/contracts"
+	gologC "github.com/codemodify/golog/contracts"
 )
 
 type asyncLogger struct {

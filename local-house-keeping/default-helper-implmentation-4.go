@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	gologC "github.com/TheFlyingNomad/golog/contracts"
+	gologC "github.com/codemodify/golog/contracts"
 )
 
 func (thisRef defaultHelperImplmentation) LogPanicWithFields(fields gologC.Fields) {

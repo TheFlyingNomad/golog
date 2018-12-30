@@ -1,9 +1,9 @@
 package mixers
 
 import (
-	housekeeping "github.com/TheFlyingNomad/golog/local-house-keeping"
+	housekeeping "github.com/codemodify/golog/local-house-keeping"
 
-	gologC "github.com/TheFlyingNomad/golog/contracts"
+	gologC "github.com/codemodify/golog/contracts"
 )
 
 type multiLogger struct {

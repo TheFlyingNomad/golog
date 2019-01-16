@@ -17,7 +17,7 @@ func Init(logger gologC.EasyLogger) {
 // NewConsoleLogger -
 func NewConsoleLogger() gologC.EasyLogger {
 	return housekeeping.NewDefaultHelperImplmentation(
-		gologP.NewConsoleLogger(),
+		gologP.NewConsoleLogger(gologC.TypeDebug),
 	)
 }
 

@@ -7,11 +7,15 @@ import (
 	coloredLogs "github.com/logrusorgru/aurora"
 )
 
-type consoleLogger struct{}
+type consoleLogger struct {
+	logUntil int
+}
 
 // NewConsoleLogger -
-func NewConsoleLogger() gologC.Logger {
-	return &consoleLogger{}
+func NewConsoleLogger(logUntil int) gologC.Logger {
+	return &consoleLogger{
+		logUntil: logUntil,
+	}
 }
 
 func (thisRef consoleLogger) Log(logEntry gologC.LogEntry) {
@@ -21,6 +25,10 @@ func (thisRef consoleLogger) Log(logEntry gologC.LogEntry) {
 	// TypeWarning
 	// TypeInfo
 	// TypeDebug
+
+	if logEntry.LogType > thisRef.logUntil {
+		return
+	}
 
 	if logEntry.LogType < gologC.TypeWarning {
 		fmt.Println(coloredLogs.Red(logEntry.Message))

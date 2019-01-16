@@ -35,8 +35,8 @@ func main() {
 		gologF.NewSimpleFormatterLogger(
 			gologM.NewMultiLogger(
 				[]gologC.Logger{
-					gologP.NewConsoleLogger(),
-					gologP.NewFileLogger("log.log"),
+					gologP.NewConsoleLogger(gologC.TypeDebug),
+					gologP.NewFileLogger(gologC.TypeDebug, "log.log"),
 				},
 			),
 		),
@@ -69,8 +69,8 @@ func main() {
 				gologM.NewBufferedLogger(
 					gologM.NewMultiLogger(
 						[]gologC.Logger{
-							gologP.NewConsoleLogger(),
-							gologP.NewFileLogger("log.log"),
+							gologP.NewConsoleLogger(gologC.TypeDebug),
+							gologP.NewFileLogger(gologC.TypeDebug, "log.log"),
 						},
 					),
 					gologM.BufferedLoggerConfig{

@@ -9,7 +9,7 @@ import (
 	gologC "github.com/brightappsllc/golog/contracts"
 )
 
-type inMemoryGroupedAndSortedLogger struct {
+type InMemoryGroupedAndSortedLogger struct {
 	logLinesByKey         map[string][]gologC.LogEntry
 	logLinesByKeyWithTime map[string]time.Time
 	loggerToSendTo        gologC.Logger
@@ -18,7 +18,7 @@ type inMemoryGroupedAndSortedLogger struct {
 
 // NewInMemoryGroupedAndSortedLogger -
 func NewInMemoryGroupedAndSortedLogger(logger gologC.Logger) gologC.Logger {
-	return &inMemoryGroupedAndSortedLogger{
+	return &InMemoryGroupedAndSortedLogger{
 		logLinesByKey:         map[string][]gologC.LogEntry{},
 		logLinesByKeyWithTime: map[string]time.Time{},
 		loggerToSendTo:        logger,
@@ -26,7 +26,7 @@ func NewInMemoryGroupedAndSortedLogger(logger gologC.Logger) gologC.Logger {
 	}
 }
 
-func (thisRef *inMemoryGroupedAndSortedLogger) Log(logEntry gologC.LogEntry) {
+func (thisRef *InMemoryGroupedAndSortedLogger) Log(logEntry gologC.LogEntry) {
 	thisRef.rwMutex.Lock()
 	defer thisRef.rwMutex.Unlock()
 
@@ -44,7 +44,7 @@ func (thisRef *inMemoryGroupedAndSortedLogger) Log(logEntry gologC.LogEntry) {
 	}
 }
 
-func (thisRef *inMemoryGroupedAndSortedLogger) Flush() {
+func (thisRef *InMemoryGroupedAndSortedLogger) Flush() {
 	thisRef.rwMutex.RLock()
 	defer thisRef.rwMutex.RUnlock()
 

@@ -4,12 +4,14 @@ import "time"
 
 // TypePanic -
 const (
-	TypePanic = iota
-	TypeFatal
-	TypeError
-	TypeWarning
-	TypeInfo
-	TypeDebug
+	TypeDisable = iota // 0 - log this no matter what
+	TypeTrace          // 1
+	TypePanic          // 2
+	TypeFatal          // 3
+	TypeError          // 4
+	TypeWarning        // 5
+	TypeInfo           // 6
+	TypeDebug          // 7
 )
 
 // Fields -
@@ -41,6 +43,7 @@ type EasyLogger interface {
 	LogWarningWithTagAndLevel(tag string, level int, message string)
 	LogInfoWithTagAndLevel(tag string, level int, message string)
 	LogDebugWithTagAndLevel(tag string, level int, message string)
+	LogTraceWithTagAndLevel(tag string, level int, message string)
 
 	LogPanic(message string)
 	LogFatal(message string)
@@ -48,6 +51,7 @@ type EasyLogger interface {
 	LogWarning(message string)
 	LogInfo(message string)
 	LogDebug(message string)
+	LogTrace(message string)
 
 	LogPanicWithFields(fields Fields)
 	LogFatalWithFields(fields Fields)
@@ -55,4 +59,5 @@ type EasyLogger interface {
 	LogWarningWithFields(fields Fields)
 	LogInfoWithFields(fields Fields)
 	LogDebugWithFields(fields Fields)
+	LogTraceWithFields(fields Fields)
 }

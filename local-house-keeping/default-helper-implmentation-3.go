@@ -18,3 +18,6 @@ func (thisRef defaultHelperImplmentation) LogInfo(message string) {
 func (thisRef defaultHelperImplmentation) LogDebug(message string) {
 	thisRef.LogDebugWithTagAndLevel("", 0, message)
 }
+func (thisRef defaultHelperImplmentation) LogTrace(message string) {
+	thisRef.LogTraceWithTagAndLevel("", 0, message)
+}

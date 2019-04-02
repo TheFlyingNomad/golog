@@ -60,3 +60,12 @@ func (thisRef defaultHelperImplmentation) LogDebugWithTagAndLevel(tag string, le
 		Message: message,
 	})
 }
+func (thisRef defaultHelperImplmentation) LogTraceWithTagAndLevel(tag string, level int, message string) {
+	thisRef.Log(gologC.LogEntry{
+		Time:    time.Now(),
+		LogType: gologC.TypeTrace,
+		Tag:     tag,
+		Level:   level,
+		Message: message,
+	})
+}

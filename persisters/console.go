@@ -19,14 +19,12 @@ func NewConsoleLogger(logUntil int) gologC.Logger {
 }
 
 func (thisRef consoleLogger) Log(logEntry gologC.LogEntry) {
-	// TypePanic = iota
-	// TypeFatal
-	// TypeError
-	// TypeWarning
-	// TypeInfo
-	// TypeDebug
+	if logEntry.LogType == gologC.TypeDisable {
+		return
+	}
 
-	if logEntry.LogType > thisRef.logUntil {
+	if logEntry.LogType > thisRef.logUntil &&
+		logEntry.LogType != gologC.TypeTrace {
 		return
 	}
 

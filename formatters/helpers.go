@@ -12,4 +12,5 @@ var logTypeToString = map[int]string{
 	gologC.TypeWarning: "OOOPS",
 	gologC.TypeInfo:    "INFOO",
 	gologC.TypeDebug:   "DEBUG",
+	gologC.TypeTrace:   "TRACE",
 }

@@ -55,3 +55,11 @@ func (thisRef defaultHelperImplmentation) LogDebugWithFields(fields gologC.Field
 
 	thisRef.LogDebugWithTagAndLevel("", 0, string(data))
 }
+func (thisRef defaultHelperImplmentation) LogTraceWithFields(fields gologC.Fields) {
+	var data, err = json.Marshal(fields)
+	if err != nil {
+		fmt.Println(fmt.Sprintf("%v", err))
+	}
+
+	thisRef.LogTraceWithTagAndLevel("", 0, string(data))
+}

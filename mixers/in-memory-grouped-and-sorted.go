@@ -1,4 +1,4 @@
-package persisters
+package mixers
 
 import (
 	"fmt"

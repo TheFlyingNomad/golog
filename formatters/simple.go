@@ -52,6 +52,7 @@ func (thisRef simpleFormatterLogger) Log(logEntry gologC.LogEntry) {
 
 	if logEntry.Level > 0 {
 		formatting = formatting + fmt.Sprintf(" %"+strconv.Itoa(logEntry.Level*4)+"v", "")
+		formatting += " ->"
 	}
 	formatting = formatting + " %s"
 

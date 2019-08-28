@@ -4,8 +4,8 @@ import "time"
 
 // TypePanic -
 const (
-	TypeDisable = iota // 0 - log this no matter what
-	TypeTrace          // 1
+	TypeDisable = iota // 0
+	TypeTrace          // 1 - log this no matter what
 	TypePanic          // 2
 	TypeFatal          // 3
 	TypeError          // 4
